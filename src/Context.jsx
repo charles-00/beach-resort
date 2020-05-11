@@ -65,7 +65,16 @@ class RoomProvider extends Component {
   };
 
   handleFilterRooms = () => {
-    let { rooms, type, capacity, price } = this.state;
+    let {
+      rooms,
+      type,
+      capacity,
+      price,
+      minSize,
+      maxSize,
+      breakfast,
+      pets,
+    } = this.state;
     let tmpRooms = [...rooms];
 
     // Parse To Int
@@ -79,6 +88,15 @@ class RoomProvider extends Component {
       tmpRooms = tmpRooms.filter((room) => room.capacity >= capacity);
 
     tmpRooms = tmpRooms.filter((room) => room.price <= price);
+
+    tmpRooms = tmpRooms.filter(
+      (room) => room.size >= minSize && room.size <= maxSize
+    );
+
+    if (breakfast)
+      tmpRooms = tmpRooms.filter((room) => room.breakfast === true);
+
+    if (pets) tmpRooms = tmpRooms.filter((room) => room.pets === true);
 
     this.setState({ sortedRooms: tmpRooms });
   };
