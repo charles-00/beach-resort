@@ -2,10 +2,8 @@ import React from "react";
 // import { useContext } from "react";
 import { RoomConsumer } from "../Context";
 import Title from "./Title";
-import _ from "lodash";
 
 // Get Unique Only The Unique Type From Rooms
-
 const getUniqueValue = (items, value) => {
   return [...new Set(items.map((item) => item[value]))];
 };
